@@ -60,7 +60,9 @@ jobs:
         run: alembic upgrade head
 
       - name: Run API tests
-        run: pytest -q
+        env:
+          PYTHONPATH: ${{ github.workspace }}/backend
+        run: python -m pytest -q
 
   frontend-build:
     runs-on: ubuntu-latest
